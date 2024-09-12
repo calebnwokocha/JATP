@@ -81,7 +81,6 @@ public class JATP {
 
     public static void main(String[] args) {
         JATP JATP = new JATP();
-
         while (true) {
             System.out.print("left string: ");
             String leftString = JATP.scanner.nextLine();
