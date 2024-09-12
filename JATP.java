@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class JATP {
     private final Scanner scanner = new Scanner(System.in);
     private final HashMap<String, String> map = new HashMap<>();
-    private final HashMap<String, String> reverseMap = new HashMap<>();
 
     public JATP() {
         System.out.println("JAVA AUTOMATED THEOREM PROVER (JATP)");
@@ -31,13 +30,8 @@ public class JATP {
 
     private void output(String leftString) {
         System.out.println("theorem: " + leftString + "=" + this.map.get(leftString)
-                + "=" + this.reverseMap.get(leftString)
-                + "=" + this.map.get(this.map.get(leftString))
-                + "=" + this.reverseMap.get(this.reverseMap.get(leftString))
-                + "=" + this.map.get(this.reverseMap.get(leftString))
-                + "=" + this.reverseMap.get(this.map.get(leftString)));
+                + "=" + this.map.get(this.map.get(leftString)));
         System.out.println("map: " + this.map);
-        System.out.println("reverse map: " + this.reverseMap);
     }
 
     private void prove(String leftString, String rightString) {
@@ -47,14 +41,11 @@ public class JATP {
             System.out.print("redefinition: " + leftString + "=");
             String newRightString = this.scanner.nextLine();
             if (newRightString.equals(rightString)){
-                this.reverseMap.remove(this.map.get(leftString));
-                this.reverseMap.put(newRightString, leftString);
                 this.map.replace(leftString, newRightString);
                 this.save(leftString, newRightString);
             }
         } else {
             this.map.put(leftString, rightString);
-            this.reverseMap.put(rightString, leftString);
             this.save(leftString, rightString);
         }
     }
@@ -72,15 +63,12 @@ public class JATP {
 
     private void load() {
         this.map.clear();
-        this.reverseMap.clear();
-
         try (DataInputStream dis = new DataInputStream(new FileInputStream("map.jatp"))) {
             while (true) {
                 try {
                     String leftString = dis.readUTF();
                     String rightString = dis.readUTF();
                     this.map.put(leftString, rightString);
-                    this.reverseMap.put(rightString, leftString);
                 } catch (EOFException e) {
                     break;
                 }
