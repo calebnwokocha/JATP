@@ -36,7 +36,7 @@ public class JATP {
 
     private void prove(String leftString, String rightString) {
         if (this.map.containsKey(leftString)) {
-            System.out.println("contradiction: " + leftString + "≠" + rightString);
+            System.out.println("contradiction: " + leftString + "=" + rightString);
             System.out.println("recall: " + leftString + "=" + this.map.get(leftString));
             System.out.print("redefinition: " + leftString + "=");
             rightString = this.scanner.nextLine();
