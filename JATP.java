@@ -61,7 +61,7 @@ public class JATP {
 
     private void save(String leftString, String rightString) {
         try (DataOutputStream dos = new DataOutputStream(new
-                FileOutputStream("memory.jatp", true))) {
+                FileOutputStream("map.jatp", true))) {
             dos.writeUTF(leftString);
             dos.writeUTF(rightString);
             System.out.println("saved " + leftString + "=" + rightString);
@@ -74,7 +74,7 @@ public class JATP {
         this.map.clear();
         this.reverseMap.clear();
 
-        try (DataInputStream dis = new DataInputStream(new FileInputStream("memory.jatp"))) {
+        try (DataInputStream dis = new DataInputStream(new FileInputStream("map.jatp"))) {
             while (true) {
                 try {
                     String leftString = dis.readUTF();
@@ -85,9 +85,9 @@ public class JATP {
                     break;
                 }
             }
-            System.out.println("memory map loaded");
+            System.out.println("map loaded");
         } catch (IOException e) {
-            System.out.println("error loading memory map: " + e.getMessage());
+            System.out.println("error loading map: " + e.getMessage());
         }
     }
 
