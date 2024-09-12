@@ -39,10 +39,10 @@ public class JATP {
             System.out.println("contradiction: " + leftString + "≠" + rightString);
             System.out.println("recall: " + leftString + "=" + this.map.get(leftString));
             System.out.print("redefinition: " + leftString + "=");
-            String newRightString = this.scanner.nextLine();
-            if (newRightString.equals(rightString)){
-                this.map.replace(leftString, newRightString);
-                this.save(leftString, newRightString);
+            rightString = this.scanner.nextLine();
+            if (!rightString.equals(this.map.get(leftString))){
+                this.map.replace(leftString, rightString);
+                this.save(leftString, rightString);
             }
         } else {
             this.map.put(leftString, rightString);
