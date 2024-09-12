@@ -66,7 +66,7 @@ public class JATP {
             dos.writeUTF(rightString);
             System.out.println("saved " + leftString + "=" + rightString);
         } catch (IOException e) {
-            System.out.println("error saving " + leftString + "=" + rightString + "; " + e.getMessage());
+            System.out.println("error saving " + leftString + "=" + rightString + " --> " + e.getMessage());
         }
     }
 
