@@ -37,6 +37,7 @@ public class JATP {
             System.out.print("definition: " + this.map.get(leftString) + "=");
             String rightString = this.scanner.nextLine();
             this.map.put(this.map.get(leftString), rightString);
+            this.save(this.map.get(leftString), rightString);
         }
     }
 
