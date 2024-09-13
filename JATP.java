@@ -62,10 +62,10 @@ public class JATP {
     }
 
     private void save(String leftString, String rightString) {
-        try (DataOutputStream dos = new DataOutputStream(new
+        try (DataOutputStream DOS = new DataOutputStream(new
                 FileOutputStream("map.jatp", true))) {
-            dos.writeUTF(leftString);
-            dos.writeUTF(rightString);
+            DOS.writeUTF(leftString);
+            DOS.writeUTF(rightString);
             System.out.println("saved " + leftString + "=" + rightString);
         } catch (IOException e) {
             System.out.println("error saving " + leftString + "=" + rightString + " --> " + e.getMessage());
@@ -74,11 +74,11 @@ public class JATP {
 
     private void load() {
         this.map.clear();
-        try (DataInputStream dis = new DataInputStream(new FileInputStream("map.jatp"))) {
+        try (DataInputStream DIS = new DataInputStream(new FileInputStream("map.jatp"))) {
             while (true) {
                 try {
-                    String leftString = dis.readUTF();
-                    String rightString = dis.readUTF();
+                    String leftString = DIS.readUTF();
+                    String rightString = DIS.readUTF();
                     this.map.put(leftString, rightString);
                 } catch (EOFException e) {
                     break;
