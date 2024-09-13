@@ -8,7 +8,7 @@ public class JATP {
 
     public JATP() {
         System.out.println("JAVA AUTOMATED THEOREM PROVER (JATP)");
-        System.out.println("Copyright: Caleb Princewill Nwokocha");
+        System.out.println("Creative Commons Zero v1.0 Universal");
         System.out.println();
         System.out.println("Theorem: Every equation has a left string and a right string.");
         System.out.println("Example 1: a is left string of a=b and b is its right string.");
