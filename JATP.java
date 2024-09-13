@@ -4,72 +4,76 @@ import java.util.Scanner;
 
 public class JATP {
     private final Scanner scanner = new Scanner(System.in);
-    private final HashMap<String, String> map = new HashMap<>();
+    private final HashMap<Object, Object> map = new HashMap<>();
 
     public JATP() {
         System.out.println("JAVA AUTOMATED THEOREM PROVER (JATP)");
         System.out.println("Creator: Caleb Princewill Nwokocha");
         System.out.println("License: Creative Commons Zero v1.0 Universal");
         System.out.println();
-        System.out.println("Theorem: Every equation has a left string and a right string.");
-        System.out.println("Example 1: a is left string of a=b and b is its right string.");
-        System.out.println("Example 2: a is left string of a=a and a is its right string.");
-        System.out.println("Example 3: a+b is left string of a+b=b+a and b+a is its right string.");
-        System.out.println("Example 4: a+b is left string of a+b=a+b and a+b is its right string.");
+        System.out.println("Theorem: Every equation has a left object and a right object.");
+        System.out.println("Example 1: a is left object of a=b and b is its right object.");
+        System.out.println("Example 2: a is left object of a=a and a is its right object.");
+        System.out.println("Example 3: a+b is left object of a+b=b+a and b+a is its right object.");
+        System.out.println("Example 4: a+b is left object of a+b=a+b and a+b is its right object.");
         System.out.println();
         this.load();
     }
 
-    public void input(String leftString, String rightString) {
-        if (this.map.containsKey(leftString) &&
-                this.map.get(leftString).equals(rightString)) {
-            output(leftString);
-        } else { prove(leftString, rightString); }
+    public void input(Object leftObject, Object rightObject) {
+        if (this.map.containsKey(leftObject) &&
+                this.map.get(leftObject).equals(rightObject)) {
+            output(leftObject.toString());
+        } else { prove(leftObject, rightObject); }
     }
 
-    private void output(String leftString) {
-        if (this.map.get(this.map.get(leftString)) != null){
-            System.out.println("theorem: " + leftString + "=" + this.map.get(leftString)
-                    + "=" + this.map.get(this.map.get(leftString)));
-            System.out.println("map: " + this.map);
-        } else { this.define(this.map.get(leftString));}
+    private Object[] output(Object leftObject) {
+        if (this.map.get(this.map.get(leftObject)) != null){
+            if (leftObject instanceof String ) {
+                System.out.println("theorem: " + leftObject + "=" + this.map.get(leftObject)
+                        + "=" + this.map.get(this.map.get(leftObject)));
+                System.out.println("map: " + this.map);
+            } else {
+                return new Object[]{leftObject, this.map.get(leftObject), 
+                        this.map.get(this.map.get(leftObject))};
+            }
+        } else { this.define(this.map.get(leftObject), new Object());}
+        return null;
     }
 
-    private void define(String leftString) {
-        System.out.print("definition: " + leftString + "=");
-        String rightString = this.scanner.nextLine();
-        this.map.put(leftString, rightString);
-        this.save(leftString, rightString);
-    }
-
-    private void redefine(String leftString, String rightString) {
-        System.out.print("redefinition: " + leftString + "=");
-        rightString = this.scanner.nextLine();
-        if (!rightString.equals(this.map.get(leftString))){
-            this.map.replace(leftString, rightString);
-            this.save(leftString, rightString);
+    private void define(Object leftObject, Object rightObject) {
+        if (leftObject instanceof String ) {
+            System.out.print("definition: " + leftObject + "=");
+            rightObject = this.scanner.nextLine();
+        }
+        if (leftObject.getClass().equals(rightObject.getClass())) {
+            this.map.put(leftObject, rightObject);
+            this.save(leftObject, rightObject);
         }
     }
-
-    private void prove(String leftString, String rightString) {
-        if (this.map.containsKey(leftString)) {
-            System.out.println("contradiction: " + leftString + "=" + rightString);
-            System.out.println("recall: " + leftString + "=" + this.map.get(leftString));
-            this.redefine(leftString, rightString);
+    
+    private void prove(Object leftObject, Object rightObject) {
+        if (this.map.containsKey(leftObject)) {
+            if (leftObject instanceof String ) {
+                System.out.println("contradiction: " + leftObject + "=" + rightObject);
+                System.out.println("recall: " + leftObject + "=" + this.map.get(leftObject));
+            } this.define(leftObject, rightObject);
         } else {
-            this.map.put(leftString, rightString);
-            this.save(leftString, rightString);
+            this.map.put(leftObject, rightObject);
+            this.save(leftObject, rightObject);
         }
     }
 
-    private void save(String leftString, String rightString) {
-        try (DataOutputStream DOS = new DataOutputStream(new
-                FileOutputStream("map.jatp", true))) {
-            DOS.writeUTF(leftString);
-            DOS.writeUTF(rightString);
-            System.out.println("saved " + leftString + "=" + rightString);
-        } catch (IOException e) {
-            System.out.println("error saving " + leftString + "=" + rightString + " --> " + e.getMessage());
+    private void save(Object leftObject, Object rightObject) {
+        if (leftObject instanceof String && rightObject instanceof String) {
+            try (DataOutputStream DOS = new DataOutputStream(new
+                    FileOutputStream("map.jatp", true))) {
+                DOS.writeUTF(leftObject.toString());
+                DOS.writeUTF(rightObject.toString());
+                System.out.println("saved " + leftObject + "=" + rightObject);
+            } catch (IOException e) {
+                System.out.println("error saving " + leftObject + "=" + rightObject + " --> " + e.getMessage());
+            }
         }
     }
 
@@ -78,9 +82,9 @@ public class JATP {
         try (DataInputStream DIS = new DataInputStream(new FileInputStream("map.jatp"))) {
             while (true) {
                 try {
-                    String leftString = DIS.readUTF();
-                    String rightString = DIS.readUTF();
-                    this.map.put(leftString, rightString);
+                    String leftObject = DIS.readUTF();
+                    String rightObject = DIS.readUTF();
+                    this.map.put(leftObject, rightObject);
                 } catch (EOFException e) {
                     break;
                 }
@@ -95,10 +99,10 @@ public class JATP {
         JATP JATP = new JATP();
         while (true) {
             System.out.print("left string: ");
-            String leftString = JATP.scanner.nextLine();
+            String leftObject = JATP.scanner.nextLine();
             System.out.print("right string: ");
-            String rightString = JATP.scanner.nextLine();
-            JATP.input(leftString, rightString);
+            String rightObject = JATP.scanner.nextLine();
+            JATP.input(leftObject, rightObject);
         }
     }
 }
