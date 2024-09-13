@@ -29,9 +29,15 @@ public class JATP {
     }
 
     private void output(String leftString) {
-        System.out.println("theorem: " + leftString + "=" + this.map.get(leftString)
-                + "=" + this.map.get(this.map.get(leftString)));
-        System.out.println("map: " + this.map);
+        if (this.map.get(this.map.get(leftString)) != null){
+            System.out.println("theorem: " + leftString + "=" + this.map.get(leftString)
+                    + "=" + this.map.get(this.map.get(leftString)));
+            System.out.println("map: " + this.map);
+        } else {
+            System.out.print("definition: " + this.map.get(leftString) + "=");
+            String rightString = this.scanner.nextLine();
+            this.map.put(this.map.get(leftString), rightString);
+        }
     }
 
     private void prove(String leftString, String rightString) {
