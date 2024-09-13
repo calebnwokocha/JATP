@@ -23,9 +23,7 @@ public class JATP {
         if (this.map.containsKey(leftString) &&
                 this.map.get(leftString).equals(rightString)) {
             output(leftString);
-        } else {
-            prove(leftString, rightString);
-        }
+        } else { prove(leftString, rightString); }
     }
 
     private void output(String leftString) {
@@ -33,11 +31,22 @@ public class JATP {
             System.out.println("theorem: " + leftString + "=" + this.map.get(leftString)
                     + "=" + this.map.get(this.map.get(leftString)));
             System.out.println("map: " + this.map);
-        } else {
-            System.out.print("definition: " + this.map.get(leftString) + "=");
-            String rightString = this.scanner.nextLine();
-            this.map.put(this.map.get(leftString), rightString);
-            this.save(this.map.get(leftString), rightString);
+        } else { this.define(this.map.get(leftString));}
+    }
+
+    private void define(String leftString) {
+        System.out.print("definition: " + leftString + "=");
+        String rightString = this.scanner.nextLine();
+        this.map.put(leftString, rightString);
+        this.save(leftString, rightString);
+    }
+
+    private void redefine(String leftString, String rightString) {
+        System.out.print("redefinition: " + leftString + "=");
+        rightString = this.scanner.nextLine();
+        if (!rightString.equals(this.map.get(leftString))){
+            this.map.replace(leftString, rightString);
+            this.save(leftString, rightString);
         }
     }
 
@@ -45,12 +54,7 @@ public class JATP {
         if (this.map.containsKey(leftString)) {
             System.out.println("contradiction: " + leftString + "=" + rightString);
             System.out.println("recall: " + leftString + "=" + this.map.get(leftString));
-            System.out.print("redefinition: " + leftString + "=");
-            rightString = this.scanner.nextLine();
-            if (!rightString.equals(this.map.get(leftString))){
-                this.map.replace(leftString, rightString);
-                this.save(leftString, rightString);
-            }
+            this.redefine(leftString, rightString);
         } else {
             this.map.put(leftString, rightString);
             this.save(leftString, rightString);
