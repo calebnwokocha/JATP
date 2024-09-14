@@ -31,21 +31,21 @@ public class JATP {
 
     private void output(String leftString) {
         if (this.map.get(this.map.get(leftString)) != null){
-            System.out.println("theorem: " + leftString + "=" + this.map.get(leftString)
+            System.out.println("Theorem: " + leftString + "=" + this.map.get(leftString)
                     + "=" + this.map.get(this.map.get(leftString)));
-            System.out.println("map: " + this.map);
+            System.out.println("Map: " + this.map);
         } else { this.define(this.map.get(leftString));}
     }
 
     private void define(String leftString) {
-        System.out.print("definition: " + leftString + "=");
+        System.out.print("Definition: " + leftString + "=");
         String rightString = this.scanner.nextLine();
         this.map.put(leftString, rightString);
         this.save(leftString, rightString);
     }
 
     private void redefine(String leftString, String rightString) {
-        System.out.print("redefinition: " + leftString + "=");
+        System.out.print("Redefinition: " + leftString + "=");
         rightString = this.scanner.nextLine();
         if (!rightString.equals(this.map.get(leftString))) {
             this.map.replace(leftString, rightString);
@@ -55,8 +55,8 @@ public class JATP {
 
     private void prove(String leftString, String rightString) {
         if (this.map.containsKey(leftString)) {
-            System.out.println("contradiction: " + leftString + "=" + rightString);
-            System.out.println("recall: " + leftString + "=" + this.map.get(leftString));
+            System.out.println("Contradiction: " + leftString + "=" + rightString);
+            System.out.println("Recall: " + leftString + "=" + this.map.get(leftString));
             this.redefine(leftString, rightString);
         } else {
             this.map.put(leftString, rightString);
@@ -69,9 +69,9 @@ public class JATP {
                 FileOutputStream("map.jatp", true))) {
             DOS.writeUTF(leftString);
             DOS.writeUTF(rightString);
-            System.out.println("saved " + leftString + "=" + rightString);
+            System.out.println("Saved " + leftString + "=" + rightString);
         } catch (IOException e) {
-            System.out.println("error saving " + leftString + "=" + rightString + " --> " + e.getMessage());
+            System.out.println("Error saving " + leftString + "=" + rightString + " --> " + e.getMessage());
         }
     }
 
@@ -87,18 +87,18 @@ public class JATP {
                     break;
                 }
             }
-            System.out.println("map loaded");
+            System.out.println("Map loaded");
         } catch (IOException e) {
-            System.out.println("error loading map: " + e.getMessage());
+            System.out.println("Error loading map: " + e.getMessage());
         }
     }
 
     public static void main(String[] args) {
         JATP JATP = new JATP();
         while (true) {
-            System.out.print("left string: ");
+            System.out.print("Left string: ");
             String leftString = JATP.scanner.nextLine();
-            System.out.print("right string: ");
+            System.out.print("Right string: ");
             String rightString = JATP.scanner.nextLine();
             JATP.input(leftString, rightString);
         }
