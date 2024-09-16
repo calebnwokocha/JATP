@@ -24,7 +24,9 @@ public class JATP {
         if (this.map.containsKey(leftString) &&
                 this.map.get(leftString).equals(rightString)) {
             this.output(leftString);
-        } else { this.prove(leftString, rightString); }
+        } else {
+            this.prove(leftString, rightString);
+        }
     }
 
     private void output(String leftString) {
@@ -32,7 +34,9 @@ public class JATP {
             System.out.println("Theorem: " + leftString + "=" + this.map.get(leftString)
                     + "=" + this.map.get(this.map.get(leftString)));
             System.out.println("Map: " + this.map);
-        } else { this.define(this.map.get(leftString));}
+        } else {
+            this.define(this.map.get(leftString));
+        }
     }
 
     private void define(String leftString) {
