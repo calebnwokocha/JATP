@@ -24,9 +24,7 @@ public class JATP {
         if (this.map.containsKey(leftString) &&
                 this.map.get(leftString).equals(rightString)) {
             this.output(leftString);
-        } else {
-            this.prove(leftString, rightString);
-        }
+        } else { this.prove(leftString, rightString); }
     }
 
     private void output(String leftString) {
