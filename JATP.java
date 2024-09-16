@@ -55,7 +55,7 @@ public class JATP {
 
     private void prove(String leftString, String rightString) {
         if (this.map.containsKey(leftString)) {
-            System.out.println("Contradiction: " + leftString + "=" + rightString);
+            System.out.println("Conjecture: " + leftString + "=" + rightString);
             System.out.println("Recall: " + leftString + "=" + this.map.get(leftString));
             this.redefine(leftString, rightString);
         } else {
