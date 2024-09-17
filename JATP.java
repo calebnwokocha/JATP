@@ -21,11 +21,10 @@ public class JATP {
     }
 
     public void input(String leftString, String rightString) {
-        if (this.map.containsKey(leftString) &&
-                this.map.get(leftString).equals(rightString)) {
+        if (this.prove(leftString, rightString)) {
             this.output(leftString);
         } else {
-            this.prove(leftString, rightString);
+            this.disprove(leftString, rightString);
         }
     }
 
@@ -55,7 +54,11 @@ public class JATP {
         }
     }
 
-    private void prove(String leftString, String rightString) {
+    private boolean prove (String leftString, String rightString) {
+        return this.map.containsKey(leftString) && this.map.get(leftString).equals(rightString);
+    }
+
+    private void disprove(String leftString, String rightString) {
         if (this.map.containsKey(leftString)) {
             System.out.println("Conjecture: " + leftString + "=" + rightString);
             System.out.println("Recall: " + leftString + "=" + this.map.get(leftString));
@@ -104,5 +107,10 @@ public class JATP {
             String rightString = JATP.scanner.nextLine();
             JATP.input(leftString, rightString);
         }
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
