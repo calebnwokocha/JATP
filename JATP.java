@@ -108,9 +108,4 @@ public class JATP {
             JATP.input(leftString, rightString);
         }
     }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 }
