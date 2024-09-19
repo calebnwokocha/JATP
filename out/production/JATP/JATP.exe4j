@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <exe4j version="8.0.1" transformSequenceNumber="3">
   <directoryPresets config="C:/Users/Caleb P. Nwokocha/IdeaProjects/JATP" />
-  <application name="Java Automated Theorem Prover" distributionSourceDir="C:/Users/Caleb P. Nwokocha/IdeaProjects/JATP" />
-  <executable name="JATP" iconSet="true" iconFile="C:/Users/Caleb P. Nwokocha/IdeaProjects/JATP/icon.ico" executableDir="./out/production/JATP" redirectStderr="false" executableMode="console" singleInstance="true">
+  <application name="JATP" distributionSourceDir="C:/Users/Caleb P. Nwokocha/IdeaProjects/JATP" />
+  <executable name="Java Automated Theorem Prover" iconSet="true" iconFile="C:/Users/Caleb P. Nwokocha/IdeaProjects/JATP/icon.ico" executableDir="./out/production/JATP" redirectStderr="false" executableMode="console" singleInstance="true">
     <versionInfo include="true" fileVersion="1.0.0.0" legalCopyright="Caleb Princewill Nwokocha" internalName="Java Automated Theorem Prover" companyName="Cale Technology Enterprise" productVersion="1.0.0.0" />
   </executable>
   <java mainClass="JATP" minVersion="22.0.0">

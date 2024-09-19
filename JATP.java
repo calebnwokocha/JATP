@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class JATP {
