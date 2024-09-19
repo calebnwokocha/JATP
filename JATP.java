@@ -45,7 +45,7 @@ public class JATP {
     }
 
     private void redefine(String leftString, String rightString) {
-        System.out.print("Redefinition: " + leftString + "=");
+        System.out.print("Redefinition/Substitution: " + leftString + "=");
         rightString = this.scanner.nextLine();
         if (!rightString.equals(this.map.get(leftString))) {
             this.map.replace(leftString, rightString);
