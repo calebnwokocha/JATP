@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class JATP {
@@ -7,7 +8,6 @@ public class JATP {
     private final HashMap<String, String> map = new HashMap<>();
 
     public JATP() {
-        System.out.println("JAVA AUTOMATED THEOREM PROVER (JATP)");
         System.out.println("Creator: Caleb Princewill Nwokocha");
         System.out.println("License: Creative Commons Zero v1.0 Universal");
         System.out.println();
