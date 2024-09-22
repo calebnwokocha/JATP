@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -39,8 +38,6 @@ public class JATP {
     }
 
     private void define(String leftString) {
-       /* System.out.println("Suggestion: " + leftString + "=" +
-                Arrays.toString(AI.test(leftString.getBytes())));*/
         System.out.print("Definition: " + leftString + "=");
         String rightString = this.scanner.nextLine();
         this.map.put(leftString, rightString);
@@ -53,7 +50,6 @@ public class JATP {
         if (!rightString.equals(this.map.get(leftString))) {
             this.map.replace(leftString, rightString);
             this.save(leftString, rightString);
-            //AI.train(leftString.getBytes(), rightString.getBytes());
         }
     }
 
