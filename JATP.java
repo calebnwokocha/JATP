@@ -8,7 +8,7 @@ public class JATP {
 
     public JATP() {
         System.out.println("Creator: Caleb Princewill Nwokocha");
-        System.out.println("License: Creative Commons Zero v1.0 Universal");
+        System.out.println("Creative Commons Zero v1.0 Universal");
         System.out.println();
         System.out.println("Every equation has a left and a right");
         System.out.println("a is left of a=b and b is its right");
