@@ -11,8 +11,8 @@ public class JATP {
         System.out.println("Creative Commons Zero v1.0 Universal");
         System.out.println();
         System.out.println("Every equation has left and right");
-        System.out.println("l is left of l=r and r is its right");
-        System.out.println("l is left of l=l and l is its right");
+        System.out.println("k is left of k=m and m is its right");
+        System.out.println("m is left of m=m and m is its right");
         System.out.println("Equation: a+b=b+a, Left: a+b, Right: b+a");
         System.out.println("Equation: a+b=a+b, Left: a+b, Right: a+b");
         System.out.println();
