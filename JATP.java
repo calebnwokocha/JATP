@@ -31,7 +31,6 @@ public class JATP {
         if (this.map.get(this.map.get(leftString)) != null){
             System.out.println("Theorem: " + leftString + "=" + this.map.get(leftString)
                     + "=" + this.map.get(this.map.get(leftString)));
-            System.out.println("Map: " + this.map);
         } else {
             this.define(this.map.get(leftString));
         }
@@ -61,6 +60,7 @@ public class JATP {
         if (this.map.containsKey(leftString)) {
             System.out.println("Conjecture: " + leftString + "=" + rightString);
             System.out.println("Recall: " + leftString + "=" + this.map.get(leftString));
+            System.out.println("Map: " + this.map);
             this.redefine(leftString, rightString);
         } else {
             this.map.put(leftString, rightString);
