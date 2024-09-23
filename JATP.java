@@ -10,11 +10,11 @@ public class JATP {
         System.out.println("Creator: Caleb Princewill Nwokocha");
         System.out.println("License: Creative Commons Zero v1.0 Universal");
         System.out.println();
-        System.out.println("Theorem: Every equation has a left string and a right string.");
-        System.out.println("Example 1: a is left string of a=b and b is its right string.");
-        System.out.println("Example 2: a is left string of a=a and a is its right string.");
-        System.out.println("Example 3: a+b is left string of a+b=b+a and b+a is its right string.");
-        System.out.println("Example 4: a+b is left string of a+b=a+b and a+b is its right string.");
+        System.out.println("Theorem: Every equation has a left and a right");
+        System.out.println("Example 1: a is left of a=b and b is its right");
+        System.out.println("Example 2: a is left of a=a and a is its right");
+        System.out.println("Example 3: Equation: a+b=b+a, Left: a+b, Right: b+a");
+        System.out.println("Example 4: Equation: a+b=a+b, Left: a+b, Right: a+b");
         System.out.println();
         this.load();
     }
@@ -91,7 +91,7 @@ public class JATP {
                     break;
                 }
             }
-            System.out.println("Map loaded");
+            System.out.println("Loaded map");
         } catch (IOException e) {
             System.out.println("Error loading map: " + e.getMessage());
         }
@@ -100,9 +100,9 @@ public class JATP {
     public static void main(String[] args) {
         JATP JATP = new JATP();
         while (true) {
-            System.out.print("Left string: ");
+            System.out.print("Left: ");
             String leftString = JATP.scanner.nextLine();
-            System.out.print("Right string: ");
+            System.out.print("Right: ");
             String rightString = JATP.scanner.nextLine();
             JATP.input(leftString, rightString);
         }
