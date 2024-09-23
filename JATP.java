@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class JATP {
-    private final HashMap<String, String> map = new HashMap<>();
+    private final HashMap<String, String> equationMap = new HashMap<>();
     private final Scanner scanner = new Scanner(System.in);
 
     public JATP() {
@@ -28,42 +28,42 @@ public class JATP {
     }
 
     private void output(String leftString) {
-        if (this.map.get(this.map.get(leftString)) != null){
-            System.out.println("Theorem: " + leftString + "=" + this.map.get(leftString)
-                    + "=" + this.map.get(this.map.get(leftString)));
+        if (this.equationMap.get(this.equationMap.get(leftString)) != null){
+            System.out.println("Theorem: " + leftString + "=" + this.equationMap.get(leftString)
+                    + "=" + this.equationMap.get(this.equationMap.get(leftString)));
         } else {
-            this.define(this.map.get(leftString));
+            this.define(this.equationMap.get(leftString));
         }
     }
 
     private void define(String leftString) {
         System.out.print("Definition: " + leftString + "=");
         String rightString = this.scanner.nextLine();
-        this.map.put(leftString, rightString);
+        this.equationMap.put(leftString, rightString);
         this.save(leftString, rightString);
     }
 
     private void redefine(String leftString, String rightString) {
         System.out.print("Redefinition: " + leftString + "=");
         rightString = this.scanner.nextLine();
-        if (!rightString.equals(this.map.get(leftString))) {
-            this.map.replace(leftString, rightString);
+        if (!rightString.equals(this.equationMap.get(leftString))) {
+            this.equationMap.replace(leftString, rightString);
             this.save(leftString, rightString);
         }
     }
 
     private boolean prove (String leftString, String rightString) {
-        return this.map.containsKey(leftString) && this.map.get(leftString).equals(rightString);
+        return this.equationMap.containsKey(leftString) && this.equationMap.get(leftString).equals(rightString);
     }
 
     private void disprove(String leftString, String rightString) {
-        if (this.map.containsKey(leftString)) {
+        if (this.equationMap.containsKey(leftString)) {
             System.out.println("Conjecture: " + leftString + "=" + rightString);
-            System.out.println("Recall: " + leftString + "=" + this.map.get(leftString));
-            System.out.println("Map: " + this.map);
+            System.out.println("Recall: " + leftString + "=" + this.equationMap.get(leftString));
+            System.out.println("Equation Map: " + this.equationMap);
             this.redefine(leftString, rightString);
         } else {
-            this.map.put(leftString, rightString);
+            this.equationMap.put(leftString, rightString);
             this.save(leftString, rightString);
         }
     }
@@ -80,13 +80,13 @@ public class JATP {
     }
 
     private void load() {
-        this.map.clear();
+        this.equationMap.clear();
         try (DataInputStream DIS = new DataInputStream(new FileInputStream("map.jatp"))) {
             while (true) {
                 try {
                     String leftString = DIS.readUTF();
                     String rightString = DIS.readUTF();
-                    this.map.put(leftString, rightString);
+                    this.equationMap.put(leftString, rightString);
                 } catch (EOFException e) {
                     break;
                 }
@@ -100,9 +100,9 @@ public class JATP {
     public static void main(String[] args) {
         JATP JATP = new JATP();
         while (true) {
-            System.out.print("Left string: ");
+            System.out.print("Left String: ");
             String leftString = JATP.scanner.nextLine();
-            System.out.print("Right string: ");
+            System.out.print("Right String: ");
             String rightString = JATP.scanner.nextLine();
             JATP.input(leftString, rightString);
         }
