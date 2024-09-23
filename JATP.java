@@ -10,11 +10,11 @@ public class JATP {
         System.out.println("Creator: Caleb Princewill Nwokocha");
         System.out.println("License: Creative Commons Zero v1.0 Universal");
         System.out.println();
-        System.out.println("Theorem: Every equation has a left and a right");
-        System.out.println("Example 1: a is left of a=b and b is its right");
-        System.out.println("Example 2: a is left of a=a and a is its right");
-        System.out.println("Example 3: Equation: a+b=b+a, Left: a+b, Right: b+a");
-        System.out.println("Example 4: Equation: a+b=a+b, Left: a+b, Right: a+b");
+        System.out.println("Every equation has a left and a right");
+        System.out.println("a is left of a=b and b is its right");
+        System.out.println("a is left of a=a and a is its right");
+        System.out.println("Equation: a+b=b+a, Left: a+b, Right: b+a");
+        System.out.println("Equation: a+b=a+b, Left: a+b, Right: a+b");
         System.out.println();
         this.load();
     }
