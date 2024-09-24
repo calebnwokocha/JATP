@@ -10,6 +10,7 @@ public class JATP {
         System.out.println("Creator: Caleb Princewill Nwokocha");
         System.out.println("Creative Commons Zero v1.0 Universal");
         System.out.println();
+        System.out.println("Every equation has left and right");
         System.out.println("c is left of c=p and p is c=p right");
         System.out.println("c is left of c=c and c is c=c right");
         System.out.println("Equation: a+b=b+a, Left: a+b, Right: b+a");
