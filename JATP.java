@@ -19,63 +19,63 @@ public class JATP {
         this.load();
     }
 
-    public void input(String leftString, String rightString) {
-        if (this.prove(leftString, rightString)) {
-            this.output(leftString);
+    public void input(String left, String right) {
+        if (this.prove(left, right)) {
+            this.output(left);
         } else {
-            this.disprove(leftString, rightString);
+            this.disprove(left, right);
         }
     }
 
-    private void output(String leftString) {
-        if (this.map.get(this.map.get(leftString)) != null){
-            System.out.println("Theorem: " + leftString + "=" + this.map.get(leftString)
-                    + "=" + this.map.get(this.map.get(leftString)));
+    private void output(String left) {
+        if (this.map.get(this.map.get(left)) != null){
+            System.out.println("Theorem: " + left + "=" + this.map.get(left)
+                    + "=" + this.map.get(this.map.get(left)));
         } else {
-            this.define(this.map.get(leftString));
+            this.define(this.map.get(left));
         }
     }
 
-    private void define(String leftString) {
-        System.out.print("Definition: " + leftString + "=");
+    private void define(String left) {
+        System.out.print("Definition: " + left + "=");
         String rightString = this.scanner.nextLine();
-        this.map.put(leftString, rightString);
-        this.save(leftString, rightString);
+        this.map.put(left, rightString);
+        this.save(left, rightString);
     }
 
-    private void redefine(String leftString, String rightString) {
-        System.out.print("Redefinition: " + leftString + "=");
-        rightString = this.scanner.nextLine();
-        if (!rightString.equals(this.map.get(leftString))) {
-            this.map.replace(leftString, rightString);
-            this.save(leftString, rightString);
+    private void redefine(String left, String right) {
+        System.out.print("Redefinition: " + left + "=");
+        right = this.scanner.nextLine();
+        if (!right.equals(this.map.get(left))) {
+            this.map.replace(left, right);
+            this.save(left, right);
         }
     }
 
-    private boolean prove (String leftString, String rightString) {
-        return this.map.containsKey(leftString) && this.map.get(leftString).equals(rightString);
+    private boolean prove (String left, String right) {
+        return this.map.containsKey(left) && this.map.get(left).equals(right);
     }
 
-    private void disprove(String leftString, String rightString) {
-        if (this.map.containsKey(leftString)) {
+    private void disprove(String left, String right) {
+        if (this.map.containsKey(left)) {
             System.out.println("Map: " + this.map);
-            System.out.println("Conjecture: " + leftString + "=" + rightString);
-            System.out.println("Recall: " + leftString + "=" + this.map.get(leftString));
-            this.redefine(leftString, rightString);
+            System.out.println("Conjecture: " + left + "=" + right);
+            System.out.println("Recall: " + left + "=" + this.map.get(left));
+            this.redefine(left, right);
         } else {
-            this.map.put(leftString, rightString);
-            this.save(leftString, rightString);
+            this.map.put(left, right);
+            this.save(left, right);
         }
     }
 
-    private void save(String leftString, String rightString) {
+    private void save(String left, String right) {
         try (DataOutputStream DOS = new DataOutputStream(new
                 FileOutputStream("map.jatp", true))) {
-            DOS.writeUTF(leftString);
-            DOS.writeUTF(rightString);
-            System.out.println("Saved " + leftString + "=" + rightString);
+            DOS.writeUTF(left);
+            DOS.writeUTF(right);
+            System.out.println("Saved " + left + "=" + right);
         } catch (IOException e) {
-            System.out.println("Error saving " + leftString + "=" + rightString + " --> " + e.getMessage());
+            System.out.println("Error saving " + left + "=" + right + " --> " + e.getMessage());
         }
     }
 
@@ -84,9 +84,9 @@ public class JATP {
         try (DataInputStream DIS = new DataInputStream(new FileInputStream("map.jatp"))) {
             while (true) {
                 try {
-                    String leftString = DIS.readUTF();
-                    String rightString = DIS.readUTF();
-                    this.map.put(leftString, rightString);
+                    String left = DIS.readUTF();
+                    String right = DIS.readUTF();
+                    this.map.put(left, right);
                 } catch (EOFException e) {
                     break;
                 }
@@ -101,10 +101,10 @@ public class JATP {
         JATP JATP = new JATP();
         while (true) {
             System.out.print("Left: ");
-            String leftString = JATP.scanner.nextLine();
+            String left = JATP.scanner.nextLine();
             System.out.print("Right: ");
-            String rightString = JATP.scanner.nextLine();
-            JATP.input(leftString, rightString);
+            String right = JATP.scanner.nextLine();
+            JATP.input(left, right);
         }
     }
 }
