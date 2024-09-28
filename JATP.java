@@ -7,7 +7,7 @@ public class JATP {
     private final Scanner scanner = new Scanner(System.in);
 
     public JATP() {
-        System.out.println("Creator: Caleb Princewill Nwokocha");
+     /* System.out.println("Creator: Caleb Princewill Nwokocha");
         System.out.println("Creative Commons Zero v1.0 Universal");
         System.out.println();
         System.out.println("Every equation has left and right");
@@ -15,7 +15,7 @@ public class JATP {
         System.out.println("c is left of c=c and c is c=c right");
         System.out.println("Equation: a+b=b+a, Left: a+b, Right: b+a");
         System.out.println("Equation: a+b=a+b, Left: a+b, Right: a+b");
-        System.out.println();
+        System.out.println();*/
         this.load();
     }
 
