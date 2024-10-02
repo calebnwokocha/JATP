@@ -43,12 +43,12 @@ public class JATP {
         this.save(left, rightString);
     }
 
-    private void redefine(String left, String right) {
+    private void redefine(String left) {
         System.out.print("Redefinition: " + left + "=");
-        String newRight = this.scanner.nextLine();
-        if (newRight.equals(right)) {
-            this.map.replace(left, newRight);
-            this.save(left, newRight);
+        String right = this.scanner.nextLine();
+        if (!right.equals(this.map.get(left))) {
+            this.map.replace(left, right);
+            this.save(left, right);
         }
     }
 
@@ -61,7 +61,7 @@ public class JATP {
             System.out.println("Map: " + this.map);
             System.out.println("Conjecture: " + left + "=" + right);
             System.out.println("Recall: " + left + "=" + this.map.get(left));
-            this.redefine(left, right);
+            this.redefine(left);
         } else {
             this.map.put(left, right);
             this.save(left, right);
