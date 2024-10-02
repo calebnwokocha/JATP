@@ -45,10 +45,10 @@ public class JATP {
 
     private void redefine(String left, String right) {
         System.out.print("Redefinition: " + left + "=");
-        right = this.scanner.nextLine();
-        if (!right.equals(this.map.get(left))) {
-            this.map.replace(left, right);
-            this.save(left, right);
+        String newRight = this.scanner.nextLine();
+        if (newRight.equals(right)) {
+            this.map.replace(left, newRight);
+            this.save(left, newRight);
         }
     }
 
